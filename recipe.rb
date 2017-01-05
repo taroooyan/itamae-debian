@@ -6,6 +6,10 @@ package "tmux" do
   action :install
 end
 
+package "silversearcher-ag" do
+  action :install
+end
+
 package "git"
 # dotfiles
 git "dotfiles" do
