@@ -1,10 +1,12 @@
 # itamae-Debian
+
 ### Development
 - debian 8
+
 ### Config
 `cp sample.node.json node.json`
 
-```sample.node.json
+```javascript:sample.node.json
 "user": "USERNAME"
 ```
 
