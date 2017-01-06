@@ -14,15 +14,15 @@ package "git"
 # dotfiles
 git "dotfiles" do
   user "#{node[:user]}"
-  destination "/home/#{node[:user]}"
+  destination "/home/#{node[:user]}/dotfiles"
   repository "https://github.com/taroooyan/dotfiles.git"
   not_if "test -d /home/#{node[:user]}/dotfiles"
 end
-# execute "dotfiles setup" do
-#   user "#{node[:user]}"
-#   cwd "/home/#{node[:user]}/dotfiles"
-#   command "./setup.sh"
-# end
+execute "dotfiles setup" do
+  user "#{node[:user]}"
+  cwd "/home/#{node[:user]}/dotfiles"
+  command "./setup.sh"
+end
 
 package "vim"
 # NeoBundle
@@ -40,7 +40,7 @@ end
 execute "Download Go" do
   user "#{node[:user]}"
   cwd "/tmp"
-  command "curl -O https://storage.googleapis.com/golang/go1.7.4.linux-amd64.tar.gz; tar xvf go1.7.4.linux-amd64.tar.gz"
+  command "wget https://storage.googleapis.com/golang/go1.7.4.linux-amd64.tar.gz; tar xvf go1.7.4.linux-amd64.tar.gz"
 end
 execute "Install Go" do
   user "root"
