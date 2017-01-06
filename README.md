@@ -6,7 +6,7 @@
 ### Config
 `cp sample.node.json node.json`
 
-```javascript:sample.node.json
+```javascript:node.json
 "user": "USERNAME"
 ```
 
