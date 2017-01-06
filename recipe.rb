@@ -12,7 +12,7 @@ end
 
 package "git"
 # dotfiles
-git "dotfiles" do
+git "clone dotfiles" do
   user "#{node[:user]}"
   destination "/home/#{node[:user]}/dotfiles"
   repository "https://github.com/taroooyan/dotfiles.git"
@@ -31,7 +31,7 @@ directory "/home/#{node[:user]}/.vim/bundle" do
   mode "755"
   not_if "test -d /home/#{node[:user]}/.vim/bundle"
 end
-git "/home/#{node[:user]}" do
+git "clone neobundle" do
   user "#{node[:user]}"
   destination "/home/#{node[:user]}/.vim/bundle/neobundle.vim"
   repository "git://github.com/Shougo/neobundle.vim"
@@ -54,3 +54,7 @@ execute "Install ghq" do
   command "export GOPATH=$HOME; /usr/local/go/bin/go get github.com/motemen/ghq"
 end
 
+execute "Install peco" do
+  user "#{node[:user]}"
+  command "export GOPATH=$HOME; /usr/local/go/bin/go get github.com/peco/peco/cmd/peco"
+end
